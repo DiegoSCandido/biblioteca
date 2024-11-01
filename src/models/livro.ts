@@ -3,15 +3,19 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface ILivro extends Document {
-    titulo: string;
-    autor: string;
-    sinopse: string;
+    title: string;
+    author: string;
+    synopsis: string;
+    coverImage: string;
+    category: string
 }
 
 const LivroSchema: Schema = new Schema({
-    titulo: { type: String, required: true },
-    autor: { type: String, required: true },
-    sinopse: { type: String, required: true },
+    title: { type: String, required: true },
+    author: { type: String, required: true },
+    synopsis: { type: String, required: true },
+    coverImage: { type: String, required: true },
+    category: { type: String, enum: ['Agronomia', 'Gestão', 'Diversos', 'Infantil'], required: true}
 });
 
 export const Livro = mongoose.model<ILivro>("Livro", LivroSchema);
